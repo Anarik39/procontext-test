@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
+  vertical-align: top;
+  padding: 20px;
+}
+
+.card__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
