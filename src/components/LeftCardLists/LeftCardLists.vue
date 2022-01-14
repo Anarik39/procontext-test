@@ -1,7 +1,7 @@
 <template>
   <div class="card">
-    <div class="card__wrapper">
-      <left-list v-for="list in listsItems" :key="list.id" :items="list.items" :listId="list.id"/>
+    <div class="card__container">
+      <left-list v-for="list in listsItems" :key="list.id" :listItem="list"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .card {
-  &__wrapper {
+  &__container {
     width: 300px;
     max-width: 100%;
   }

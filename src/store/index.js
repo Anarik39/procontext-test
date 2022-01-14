@@ -8,19 +8,29 @@ export default createStore({
     setListItems (state, payload) {
       state.listsItems = [...state.listsItems, payload]
     },
-    set (state, { itemId, listId, input }) {
+    set (state, { itemId, listId, param, type }) {
       state.listsItems.forEach((list) => {
         if (list.id === listId) {
           list.items.forEach((itemList) => {
             if (itemList.id === itemId) {
-              if (input === 'counter') {
-                itemList.state = !itemList.state
-              } else if (typeof input === 'number') {
-                itemList.counter = input
+              if (type === 'counter') {
+                itemList.checked = !itemList.checked
+              } else if (type === 'number' || type === 'delete') {
+                itemList.counter = param
               } else {
-                itemList.color = input
+                itemList.color = param
               }
             }
+          })
+        }
+      })
+    },
+    setCheckedList (state, { listId }) {
+      state.listsItems.forEach((list) => {
+        if (list.id === listId) {
+          list.checked = !list.checked
+          list.items.forEach((itemList) => {
+            itemList.checked = !itemList.checked
           })
         }
       })
@@ -38,14 +48,14 @@ export default createStore({
           items.push({
             id: itemIndex,
             color,
-            counter: Math.floor(1 + Math.random() * (10)),
-            state: false
+            counter: Math.floor(1 + Math.random() * (40)),
+            checked: false
           })
         }
         commit('setListItems', {
           id: listIndex,
           items,
-          show: false
+          checked: false
         })
       }
     }

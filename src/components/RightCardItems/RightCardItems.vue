@@ -1,17 +1,20 @@
 <template>
   <div class="card">
-    <div></div>
+    <div class="card__container">
+      <right-list v-for="list in listsItems" :key="list.id" :listItem="list"/>
+    </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import RightList from './RightList'
 
 export default defineComponent({
   name: 'RightCardItems',
-  components: {},
+  components: { RightList },
   props: {
-    items: {
+    listsItems: {
       type: Array,
       default: () => ([])
     }
@@ -20,5 +23,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-
+.card {
+  flex: 1;
+}
 </style>
